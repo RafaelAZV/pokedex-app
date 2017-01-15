@@ -157,6 +157,7 @@ def classifyQuery(svms, imageName):
 
 	call("/home/pokedexapp/pokedex-app/./generatebic %s %s.txt" % (image, featuresPath), shell = True)
 	features = readFeaturesQuery(featuresPath, pokemonData)
+	call("rm  %s %s.txt" % (image, featuresPath), shell = True)
 
 	for i in svms:
 		 votes[int(i.predict(features))] += 1
