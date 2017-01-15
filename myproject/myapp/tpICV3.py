@@ -26,9 +26,9 @@ def getLabels(pokemonName, labels):
 	elif(pokemonName == 'onix'):
 		labels.append(5)
 
-def readFeatures(featuresPath, pokemonData):
+def readFeatures(featuresPath, pokemonData, file):
 
-	fp = open("%s.txt" % (featuresPath), 'r')
+	fp = open("%s" % (featuresPath+file), 'r')
 	lines = fp.readlines()
 	auxiliar = lines[0].split("\n")
 	auxiliar = auxiliar[0].split()
@@ -38,18 +38,13 @@ def readFeatures(featuresPath, pokemonData):
 def getFeatures(pokemonName, pokemonData, labels):
 
 	fileNames = []
-	path = "/home/rafael/tpICV3/images/"
-	pathFeatures = "/home/rafael/tpICV3/"+pokemonName+"Features"
-	imagesPath  = path + pokemonName
+	#path = "/home/rafael/tpICV3/images/"
+	pathFeatures = "/home/pokedexapp/pokedex-app/myproject/myapp/"+pokemonName+"Features/"
+	path = "/home/pokedexapp/pokedex-app/myproject/myapp/"
 
-	for file in os.listdir(imagesPath):
-
-		imageName = file.split('.')
-		image = imagesPath + "/" + file
-		featuresPath = pathFeatures + "/" + imageName[0]
-		print image
-		call("./generatebic %s %s.txt" % (image, featuresPath), shell = True)
-		readFeatures(featuresPath, pokemonData)
+	for file in os.listdir(pathFeatures):
+		
+		readFeatures(featuresPath, pokemonData, file)
 		getLabels(pokemonName, labels)
 
 
