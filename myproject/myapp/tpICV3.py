@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from itertools import chain
 import time
+from PIL import Image
 
 import pdb
 
