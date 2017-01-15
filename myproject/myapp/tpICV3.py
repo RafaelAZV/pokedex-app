@@ -155,7 +155,7 @@ def classifyQuery(svms, imageName):
 	fp = open("/home/pokedexapp/pokedex-app/media/documents/2017/01/04/1.txt", 'w')
 	fp.close()
 
-	call("./home/pokedexapp/pokedex-app/generatebic %s %s.txt" % (image, featuresPath), shell = True)
+	call("/home/pokedexapp/pokedex-app/./generatebic %s %s.txt" % (image, featuresPath), shell = True)
 	features = readFeaturesQuery(featuresPath, pokemonData)
 
 	for i in svms:
