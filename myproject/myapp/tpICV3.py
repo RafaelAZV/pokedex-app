@@ -1,7 +1,5 @@
 import numpy as np
 import os
-import cv2
-import random
 from subprocess import call
 from sklearn.utils import shuffle
 from sklearn.svm import SVC
