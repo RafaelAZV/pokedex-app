@@ -44,8 +44,18 @@ def getFeatures(pokemonName, pokemonData, labels):
 
 	for file in os.listdir(pathFeatures):
 		
-		readFeatures(featuresPath, pokemonData, file)
+		readFeatures(pathFeatures, pokemonData, file)
 		getLabels(pokemonName, labels)
+
+
+def readFeaturesQuery(featuresPath, pokemonData):
+
+	fp = open("%s.txt" % (featuresPath), 'r')
+	lines = fp.readlines()
+	auxiliar = lines[0].split("\n")
+	auxiliar = auxiliar[0].split()
+	pokemonData.append(auxiliar)
+	return pokemonData
 
 
 def estimatePerformance(pokemonData, labels):
@@ -131,7 +141,7 @@ def verifyExtension(imageName):
 
 def classifyQuery(svms, imageName):
 
-	queryPath = "/home/rafael/minimal-django-file-upload-example/src/for_django_1-9/myproject/media/documents/2017/01/04/"
+	queryPath = "/home/pokedexapp/pokedex-app/media/documents/2017/01/04/"
 	name = imageName.split('.')
 	pokemonData = []
 	votes = np.zeros(6)
@@ -143,7 +153,7 @@ def classifyQuery(svms, imageName):
 	featuresPath = queryPath+name[0]
 
 	call("./generatebic %s %s.txt" % (image, featuresPath), shell = True)
-	features = readFeatures(featuresPath, pokemonData)
+	features = readFeaturesQuery(featuresPath, pokemonData)
 
 	for i in svms:
 		 votes[int(i.predict(features))] += 1
