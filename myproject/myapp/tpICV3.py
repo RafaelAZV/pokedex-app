@@ -161,11 +161,12 @@ def classifyQuery(svms, imageName):
 	for i in svms:
 		 votes[int(i.predict(features))] += 1
 
-	print np.argmax(votes)
-	
-	majorityVote = np.argmax(votes)
+	if(votes[np.argmax(votes)] <= 3):
+		return -1
 
-	return majorityVote
+	else:
+		majorityVote = np.argmax(votes)
+		return majorityVote
 
 def getPokemonPage(votes):
 
