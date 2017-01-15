@@ -150,8 +150,11 @@ def classifyQuery(svms, imageName):
 		call("convert %s %s.ppm" % (queryPath+imageName, queryPath+name[0]), shell = True)
 
 	image = queryPath+name[0]+".ppm"
-	featuresPath = queryPath+name[0]
+	featuresPath = queryPath+"1"
 
+	fp = open("/home/pokedexapp/pokedex-app/media/documents/2017/01/04/1.txt", 'w')
+	fp.close()
+	
 	call("./generatebic %s %s.txt" % (image, featuresPath), shell = True)
 	features = readFeaturesQuery(featuresPath, pokemonData)
 
