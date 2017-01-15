@@ -39,8 +39,8 @@ def getFeatures(pokemonName, pokemonData, labels):
 
 	fileNames = []
 	#path = "/home/rafael/tpICV3/images/"
-	pathFeatures = "/home/pokedexapp/pokedex-app/myproject/myapp/"+pokemonName+"Features/"
-	path = "/home/pokedexapp/pokedex-app/myproject/myapp/"
+	pathFeatures = "home/pokedexapp/pokedex-app/myproject/myapp/"+pokemonName+"Features/"
+	path = "home/pokedexapp/pokedex-app/myproject/myapp/"
 
 	for file in os.listdir(pathFeatures):
 		
@@ -141,7 +141,7 @@ def verifyExtension(imageName):
 
 def classifyQuery(svms, imageName):
 
-	queryPath = "/home/pokedexapp/pokedex-app/media/documents/2017/01/04/"
+	queryPath = "home/pokedexapp/pokedex-app/media/documents/2017/01/04/"
 	name = imageName.split('.')
 	pokemonData = []
 	votes = np.zeros(6)
@@ -151,6 +151,7 @@ def classifyQuery(svms, imageName):
 
 	image = queryPath+name[0]+".ppm"
 	featuresPath = queryPath+name[0]
+	print featuresPath
 
 	call("./generatebic %s %s.txt" % (image, featuresPath), shell = True)
 	features = readFeaturesQuery(featuresPath, pokemonData)
