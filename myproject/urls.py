@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'^squirtle', views.list, name='squirtle'),
     url(r'^ekans', views.list, name='ekans'),
     url(r'^onix', views.list, name='onix'),
+    url(r'^unknown', views.list, name='unknown'),
     url(r'^$', RedirectView.as_view(url='/myapp/list', permanent=True)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
