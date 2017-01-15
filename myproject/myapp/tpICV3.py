@@ -148,7 +148,9 @@ def classifyQuery(svms, imageName):
 	votes = np.zeros(6)
 
 	if(verifyExtension(imageName)):
-		call("convert %s %s.ppm" % (queryPath+imageName, queryPath+name[0]), shell = True)
+		#call("convert %s %s.ppm" % (queryPath+imageName, queryPath+name[0]), shell = True)
+		im = Image.open(queryPath+imageName)
+		im.save(queryPath+name+".ppm")
 
 	image = queryPath+name[0]+".ppm"
 	featuresPath = queryPath+name[0]
